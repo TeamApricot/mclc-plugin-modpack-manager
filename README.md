@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This package is an extension for the package [MCLC](https://github.com/Pierce01/MinecraftLauncher-core).
+This package is an extension of the package [MCLC](https://github.com/Pierce01/MinecraftLauncher-core).
 
 ### Installing
 
@@ -10,11 +10,9 @@ For now, just add this in your `package.json`:
 
 ```json
 {
-  "dependancies": {
-    ...,
+  "dependencies": {
     "minecraft-launcher-core": "git+https://git@github.com/bricklou/minecraft-launcher-core",
-    "mclc-plugin-modpack-manager": "git+https://git@github.com/bricklou/mclc-plugin-modpack-manager.git",
-    ...
+    "mclc-plugin-modpack-manager": "git+https://git@github.com/bricklou/mclc-plugin-modpack-manager.git"
   }
 }
 ```
@@ -50,14 +48,14 @@ let opts = {
   },
   // New option added by the plugin
   modpackManager: {
-    modslist: modslist
+    modsList: modsList
   }
 }
 ```
 
-The mods list argument need to be formated like this:
+The mods list argument need to be formatted like this:
  ```js
- const modslist = {
+ const modsList = {
     64578: { // The mod ID available on the curseforge mod's page
         fileId: 2858816, // The id of the file you want to download
         hash: "09fb0ebd8ec12914a56f8db40d5cb9a6d66b3da5" // The hash of the file (which need to be hash with sha1)

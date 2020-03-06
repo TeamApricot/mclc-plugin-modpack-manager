@@ -1,13 +1,13 @@
 {
   "name": "mclc-plugin-modpack-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Modpack manager plugin for Minecraft Launcher Core Lib",
-  "main": "test/index.js",
+  "main": "example/index.js",
   "directories": {
-    "test": "test"
+    "example": "example"
   },
   "scripts": {
-    "test": "node test/"
+    "test": "node example/"
   },
   "keywords": [
     "minecraft",
