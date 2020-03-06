@@ -1,6 +1,6 @@
 {
   "name": "mclc-plugin-modpack-manager",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Modpack manager plugin for Minecraft Launcher Core Lib",
   "main": "index.js",
   "directories": {
@@ -18,8 +18,7 @@
   "author": "Bricklou <louis.bailleau@free.fr>",
   "license": "MIT",
   "dependencies": {
-    "better-twitch-app-api": "^1.0.0",
-    "minecraft-launcher-core": "git+https://git@github.com/Bricklou/MinecraftLauncher-core.git#plugin-manager"
+    "better-twitch-app-api": "^1.0.0"
   },
   "bugs": {
     "url": "https://github.com/Bricklou/mclc-plugin-modpack-manager/issues"

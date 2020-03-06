@@ -11,8 +11,8 @@ For now, just add this in your `package.json`:
 ```json
 {
   "dependencies": {
-    "minecraft-launcher-core": "git+https://git@github.com/bricklou/minecraft-launcher-core",
-    "mclc-plugin-modpack-manager": "git+https://git@github.com/bricklou/mclc-plugin-modpack-manager.git"
+    "minecraft-launcher-core": "git+https://git@github.com/bricklou/minecraft-launcher-core#plugin-manager",
+    "mclc-plugin-modpack-manager": "latest"
   }
 }
 ```
