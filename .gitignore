@@ -1,3 +1,4 @@
 minecraft/
 node_modules/
 .vscode
+yarn.lock

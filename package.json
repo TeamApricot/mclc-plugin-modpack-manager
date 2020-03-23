@@ -18,7 +18,8 @@
   "author": "Bricklou <louis.bailleau@free.fr>",
   "license": "MIT",
   "dependencies": {
-    "better-twitch-app-api": "^1.0.0"
+    "better-twitch-app-api": "^1.0.0",
+    "unzipper": "^0.10.10"
   },
   "bugs": {
     "url": "https://github.com/Bricklou/mclc-plugin-modpack-manager/issues"

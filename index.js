@@ -2,6 +2,7 @@ const twitchAppApi = require('better-twitch-app-api');
 const shelljs = require('shelljs');
 const fs = require('fs');
 const path = require('path');
+const unzipper = require('unzipper');
 
 
 /**
@@ -57,16 +58,34 @@ class ModPackModule {
       if (this._options.hasOwnProperty('modpackManager')) {
 
         if (this._options.modpackManager.hasOwnProperty('modpackId')){
+
+          const tempFolder = path.resolve(this._options.root, "tmp");
+
           // Get the mod information from curseforge with the project ID
           const {latestFiles: modpack} = await twitchAppApi.getAddonInfo(this._options.modpackManager.modpackId);
+          
+          this._mclcInstance.emit('debug', `[MCLC/${this.getName()}]: Downloading ${modpack.fileName}`);
+          await handler.downloadAsync(modpack.downloadUrl, tempFolder, modpack.fileName, true, "mod")
+            .catch((error) => {
+              reject(error)
+            });
+          this._mclcInstance.emit('debug', `[MCLC/${this.getName()}]: Downloaded ${modpack.fileName}`);
 
-          console.log(modpack);
-          // this._mclcInstance.emit('debug', `[MCLC/${this.getName()}]: Downloading ${info.fileName}`);
-          // await handler.downloadAsync(info.downloadUrl, modFolder, info.fileName, true, "mod")
-          //   .catch((error) => {
-          //     reject(error)
-          //   });
-          // this._mclcInstance.emit('debug', `[MCLC/${this.getName()}]: Downloaded ${info.fileName}`);
+          fs.createReadStream(path.join(modFolder, info.fileName)).pipe(unzipper.Parse()).on('entry', (entry) => {
+            var fileName = entry.path;
+            var type = entry.type; // 'Directory' or 'File'
+        
+            if (/\/$/.test(fileName)) {
+              console.log('[DIR]', fileName, type);
+              return;
+            }
+        
+            console.log('[FILE]', fileName, type);
+        
+            // TODO: probably also needs the security check
+        
+            entry.pipe(process.stdout/*fs.createWriteStream('output/path')*/);
+          });
         }
         else if (this._options.modpackManager.hasOwnProperty('modsList')){
           this._mclcInstance.emit('debug', `[MCLC/${this.getName()}]: Checking for mods folder`);
