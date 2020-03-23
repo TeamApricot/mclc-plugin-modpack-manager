@@ -59,13 +59,13 @@ class ModPackModule {
 
         if (this._options.modpackManager.hasOwnProperty('modpackId')){
 
-          const tempFolder = path.resolve(this._options.root, "tmp");
+          const modFolder = path.resolve(this._options.root, "mods");
 
           // Get the mod information from curseforge with the project ID
           const {latestFiles: modpack} = await twitchAppApi.getAddonInfo(this._options.modpackManager.modpackId);
           
           this._mclcInstance.emit('debug', `[MCLC/${this.getName()}]: Downloading ${modpack.fileName}`);
-          await handler.downloadAsync(modpack.downloadUrl, tempFolder, modpack.fileName, true, "mod")
+          await handler.downloadAsync(modpack.downloadUrl, modFolder, modpack.fileName, true, "mod")
             .catch((error) => {
               reject(error)
             });
