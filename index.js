@@ -71,7 +71,7 @@ class ModPackModule {
             });
           this._mclcInstance.emit('debug', `[MCLC/${this.getName()}]: Downloaded ${modpack.fileName}`);
 
-          fs.createReadStream(path.join(modFolder, info.fileName)).pipe(unzipper.Parse()).on('entry', (entry) => {
+          fs.createReadStream(path.join(modFolder, modpack.fileName)).pipe(unzipper.Parse()).on('entry', (entry) => {
             var fileName = entry.path;
             var type = entry.type; // 'Directory' or 'File'
         
